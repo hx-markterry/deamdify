@@ -35,7 +35,6 @@ module.exports = function (file) {
 
     // ignore json files
     if(/\.json$/.test(file)){
-      console.log('returning');
       stream.queue(data);
       stream.queue(null);
       return;
