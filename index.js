@@ -32,6 +32,15 @@ module.exports = function (file) {
   
   function write(buf) { data += buf }
   function end() {
+
+    // ignore json files
+    if(/\.json$/.test(file)){
+      console.log('returning');
+      stream.queue(data);
+      stream.queue(null);
+      return;
+    }
+
     var ast = esprima.parse(data)
       , tast
       , isAMD = false;
